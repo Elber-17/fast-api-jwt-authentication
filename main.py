@@ -59,10 +59,13 @@ async def read_root() -> dict[str, str]:
 
 
 def custom_openapi():
-    del app.openapi_schema["components"]["schemas"][
-        "Body_user_openapi_login_admin_openapi_login_post"
-    ]  # delete the schema generate for openapi login form, unknow issue
+    try:
 
+        del app.openapi_schema["components"]["schemas"][
+            "Body_user_openapi_login_admin_openapi_login_post"
+        ]  # delete the schema generate for openapi login form, unknow issue
+    except:
+        pass
     return app.openapi_schema
 
 
